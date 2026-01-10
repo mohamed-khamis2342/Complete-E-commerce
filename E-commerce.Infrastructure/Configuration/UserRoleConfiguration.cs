@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace E_commerce.Configuration
 {
-    public class UserRoleConfiguration : IEntityTypeConfiguration<IdentityUserRole<string>>
+    public class UserRoleConfiguration : IEntityTypeConfiguration<IdentityUserRole<Guid>>
     {
 
-        public void Configure(EntityTypeBuilder<IdentityUserRole<string>> builder)
+        public void Configure(EntityTypeBuilder<IdentityUserRole<Guid>> builder)
         {
             builder.HasData(
-                new IdentityUserRole<string>
+                new IdentityUserRole<Guid>
                 {
-                    UserId = "f27ee3db-8321-4247-bccb-3b06dbc8ff2d", // Admin User Id
-                    RoleId = "11111111-1111-1111-1111-111111111111"  // Admin Role Id
+                    UserId = Guid.Parse( "D5ACB06C-075D-458E-3AE2-08DE50A20B3D"), // Admin User Id
+                    RoleId = Guid.Parse("11111111-1111-1111-1111-111111111111")  // Admin Role Id
                 }
             );
         }

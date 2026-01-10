@@ -50,7 +50,7 @@ namespace E_commerce.Core.Handlers.Auth
             }
 
             var response = new RegisterResponseDTO
-            {Id=USer.Id,
+            {  Id=USer.Id,
                 FirstName = request.FirstName,
             LastName = request.LastName,
             Email= request.Email,

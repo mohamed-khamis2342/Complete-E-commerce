@@ -21,14 +21,14 @@ namespace E_commerce.Core.Handlers.Auth
         public async Task<ApiResponse<UpdateResponseDTO>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
 
-            var UserFromDb = await _userManager.FindByIdAsync(request.UserId);
+            var UserFromDb = await _userManager.FindByIdAsync(request.UserId.ToString());
             if (UserFromDb == null)
                 return new ApiResponse<UpdateResponseDTO>(400, "User is not found");
 
 
             var UserSend = new UpdateResponseDTO
             {
-                CustomerId = UserFromDb.Id,
+               CustomerId = UserFromDb.Id,
                 FirstName = UserFromDb.FirstName,
                 LastName = UserFromDb.LastName,
                 Email = UserFromDb.Email,

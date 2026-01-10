@@ -16,7 +16,7 @@ namespace E_commerce.Entities
 
             // Foreign key to Product
             [Required(ErrorMessage = "Product ID is required.")]
-            public int ProductId { get; set; }
+            public Guid ProductId { get; set; }
 
             [ForeignKey("ProductId")]
             public Product Product { get; set; }

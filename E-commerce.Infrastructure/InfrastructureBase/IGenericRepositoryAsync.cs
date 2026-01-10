@@ -9,7 +9,7 @@ namespace E_commerce.Infrastructure.InfrastructureBase
     {
       
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(Guid id);
        
         
         Task<T> AddAsync(T entity);

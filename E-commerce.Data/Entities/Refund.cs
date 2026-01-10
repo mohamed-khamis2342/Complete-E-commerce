@@ -12,14 +12,14 @@ namespace E_commerce.Entities
 
             // Foreign key to Cancellation
             [Required(ErrorMessage = "Cancellation ID is required.")]
-            public int CancellationId { get; set; }
+            public Guid CancellationId { get; set; }
 
             [ForeignKey("CancellationId")]
             public Cancellation Cancellation { get; set; }
 
             // Foreign key to Payment
             [Required(ErrorMessage = "Payment ID is required.")]
-            public int PaymentId { get; set; }
+            public Guid PaymentId { get; set; }
 
             [ForeignKey("PaymentId")]
             public Payment Payment { get; set; }

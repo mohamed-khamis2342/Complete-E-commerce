@@ -11,7 +11,7 @@ namespace E_commerce.Core.Commends.Address
     public class CreateAddressCommend:IRequest<ApiResponse<AddressResponseDTO>>
     {
         [Required(ErrorMessage = "CustomerId is required.")]
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         [Required(ErrorMessage = "Address Line 1 is required.")]
         [StringLength(100, ErrorMessage = "Address Line 1 cannot exceed 100 characters.")]
         public string AddressLine1 { get; set; }

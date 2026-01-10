@@ -20,7 +20,7 @@ namespace E_commerce.Core.Handlers.Auth
         }
         public async Task<string> Handle(UpdateUserCommend request, CancellationToken cancellationToken)
         {
-            var UserFromDB = await _userManager.FindByIdAsync(request.UserId);
+            var UserFromDB = await _userManager.FindByIdAsync(request.UserId.ToString());
             if (UserFromDB == null)
                 return "Id is not valid";
             if (request == null)

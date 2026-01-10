@@ -7,7 +7,7 @@ namespace E_commerce.Core.Commends.Auth
 {
     public class RoleCommend:IRequest<string>
     {
-        public string UserID { get; set; }
+        public Guid UserID { get; set; }
         public string RoleName { get; set; }
     }
 }

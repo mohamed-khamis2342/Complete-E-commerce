@@ -34,7 +34,7 @@ namespace E_commerce.Service.Implementations
            return await _addressRepository.GetAllAsync();
         }
 
-       public async  Task<Address> GetByIdAsync(int id)
+       public async  Task<Address> GetByIdAsync(Guid id)
         {
             var Address = await _addressRepository.GetByIdAsync(id);    
 

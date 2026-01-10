@@ -51,7 +51,7 @@ namespace E_commerce.Core.Handlers.Auth
 
             var loginResponse = new LoginResponseDTO
             {
-                CustomerId = UserFromDB.Id,
+               // CustomerId = UserFromDB.Id,
                 CustomerName = UserFromDB.UserName,
                 PhoneNumber = UserFromDB.PhoneNumber,
                 Email = UserFromDB.Email,
@@ -102,7 +102,7 @@ namespace E_commerce.Core.Handlers.Auth
                         {
                             new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
                                 new Claim("UserName", _applicationUser.UserName),
-                                new Claim("UserID", _applicationUser.Id)
+                                new Claim("UserID", _applicationUser.Id.ToString())
                         };
             var userRoles = await _userManager.GetRolesAsync(_applicationUser);
             foreach (var claim in userRoles)

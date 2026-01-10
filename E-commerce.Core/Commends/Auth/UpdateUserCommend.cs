@@ -11,7 +11,7 @@ namespace E_commerce.Core.Commends.Auth
     public class UpdateUserCommend:IRequest<string>
     {
         [Required(ErrorMessage = "CustomerId is required.")]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         [Required(ErrorMessage = "First Name is required.")]
         [MinLength(2, ErrorMessage = "First Name must be at least 2 characters.")]
         [MaxLength(50, ErrorMessage = "First Name cannot exceed 50 characters.")]

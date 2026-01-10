@@ -22,7 +22,7 @@ namespace E_commerce.Core.Handlers.Auth
 
         public async Task<string> Handle(ChangePasswordCommend request, CancellationToken cancellationToken)
         {
-            var UserFromDb = await _userManager.FindByIdAsync(request.CustomerId);
+            var UserFromDb = await _userManager.FindByIdAsync(request.CustomerId.ToString());
             if (UserFromDb is null)
                 return "User is not Existed";
             var CheckPass = await _userManager.CheckPasswordAsync(UserFromDb, request.CurrentPassword);

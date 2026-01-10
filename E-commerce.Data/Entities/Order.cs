@@ -24,13 +24,13 @@ namespace E_commerce.Entities
 
             // Foreign keys to Addresses
             [Required(ErrorMessage = "Billing Address ID is required.")]
-            public int BillingAddressId { get; set; }
+            public Guid BillingAddressId { get; set; }
 
             [ForeignKey("BillingAddressId")]
             public Address BillingAddress { get; set; }
 
             [Required(ErrorMessage = "Shipping Address ID is required.")]
-            public int ShippingAddressId { get; set; }
+            public Guid ShippingAddressId { get; set; }
 
             [ForeignKey("ShippingAddressId")]
             public Address ShippingAddress { get; set; }

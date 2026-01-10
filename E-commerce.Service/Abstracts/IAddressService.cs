@@ -10,7 +10,7 @@ namespace E_commerce.Service.Abstracts
         Task<IEnumerable<Address>> GetAllAddresssAsync();
         Task<string> CreateAddressAsync(Address address);
 
-        Task<Address> GetByIdAsync(int id);
+        Task<Address> GetByIdAsync(Guid id);
 
       
     }

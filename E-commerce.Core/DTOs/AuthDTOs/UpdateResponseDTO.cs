@@ -8,7 +8,7 @@ namespace E_commerce.Core.DTOs.AuthDTOs
     public class UpdateResponseDTO
     {
         [Required(ErrorMessage = "CustomerId is required.")]
-        public string CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         [Required(ErrorMessage = "First Name is required.")]
         [MinLength(2, ErrorMessage = "First Name must be at least 2 characters.")]
         [MaxLength(50, ErrorMessage = "First Name cannot exceed 50 characters.")]

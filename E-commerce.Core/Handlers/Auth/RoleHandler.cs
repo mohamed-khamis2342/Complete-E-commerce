@@ -20,7 +20,7 @@ namespace E_commerce.Core.Handlers.Auth
         }
         public async Task<string> Handle(RoleCommend request, CancellationToken cancellationToken)
         {
-            var UserFromDB = await _userManager.FindByIdAsync(request.UserID);
+            var UserFromDB = await _userManager.FindByIdAsync(request.UserID.ToString());
             if (UserFromDB == null)
                 return "User dosent exist";
             var RoleExist = await _roleManager.FindByNameAsync(request.RoleName);

@@ -11,6 +11,6 @@ namespace E_commerce.Core.Queries.Address
     public class GetAddressByIdQuery: IRequest<ApiResponse<AddressResponseDTO>>
     {
         [Required]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

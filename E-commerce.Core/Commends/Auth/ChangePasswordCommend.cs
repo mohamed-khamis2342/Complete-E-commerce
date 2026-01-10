@@ -10,7 +10,7 @@ namespace E_commerce.Core.Commends.Auth
     {
 
         [Required(ErrorMessage = "CustomerId is required.")]
-        public string CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         [Required(ErrorMessage = "Current Password is required.")]
         public string CurrentPassword { get; set; }
         [Required(ErrorMessage = "New Password is required.")]

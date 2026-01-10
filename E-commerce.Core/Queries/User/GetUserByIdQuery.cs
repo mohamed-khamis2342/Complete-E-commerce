@@ -9,6 +9,6 @@ namespace E_commerce.Core.Queries.User
 {
     public class GetUserByIdQuery:IRequest<ApiResponse<UpdateResponseDTO>>
     {
-    public string UserId { get; set; }    
+    public Guid UserId { get; set; }    
     }
 }

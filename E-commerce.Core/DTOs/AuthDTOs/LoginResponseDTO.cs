@@ -4,7 +4,7 @@ namespace E_commerce.DTOs.AuthDTOs
 {
     public class LoginResponseDTO
     {
-        public string CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         public string CustomerName { get; set; }
 
         public string Token { get; set; }   

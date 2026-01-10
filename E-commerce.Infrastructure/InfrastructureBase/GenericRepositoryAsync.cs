@@ -24,7 +24,7 @@ namespace E_commerce.Infrastructure.InfrastructureBase
         {
             return await _dbContext.Set<T>().ToListAsync();
         }
-        public virtual async Task<T> GetByIdAsync(int id)
+        public virtual async Task<T> GetByIdAsync(Guid id)
         {
 
             return await _dbContext.Set<T>().FindAsync(id);
