@@ -41,5 +41,25 @@ namespace E_commerce.Service.Implementations
             return Address;
 
         }
+
+       public async Task<string> UpdateAddressAsync(Address address)
+        {var result = _addressRepository.UpdateAsync(address);
+
+            if (!result.IsCompleted)
+                return "Update failed";
+
+            return string.Empty;
+
+
+        }
+
+      public async  Task<string> DeleteAddressAsync(Address address)
+        {
+            var result = _addressRepository.DeleteAsync(address);
+
+            if (!result.IsCompleted)
+                return "Delete Failed";
+            return string.Empty;
+        }
     }
 }

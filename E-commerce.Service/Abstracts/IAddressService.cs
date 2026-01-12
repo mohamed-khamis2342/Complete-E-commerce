@@ -11,6 +11,8 @@ namespace E_commerce.Service.Abstracts
         Task<string> CreateAddressAsync(Address address);
 
         Task<Address> GetByIdAsync(Guid id);
+        Task<string> UpdateAddressAsync(Address address);
+        Task<string> DeleteAddressAsync(Address address);
 
       
     }

@@ -9,7 +9,7 @@ namespace E_commerce.Entities
     {
 
         
-            public Guid  Id { get; set; }
+            public Guid  Id { get; set; } = Guid.NewGuid();
 
 
         public Guid ApplicationUserId { get; set; }
