@@ -1,4 +1,5 @@
 ﻿using E_commerce.Core.Commends.Address;
+using E_commerce.DTOs;
 using E_commerce.Service.Abstracts;
 using MediatR;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace E_commerce.Core.Handlers.Address
 {
-    public class DeleteAddressHandler : IRequestHandler<DeleteAddressCommend, string>
+    public class DeleteAddressHandler : IRequestHandler<DeleteAddressCommend, ApiResponse<string>>
     {
         private readonly IAddressService _addressService;
 
@@ -17,7 +18,7 @@ namespace E_commerce.Core.Handlers.Address
         }
 
 
-        public async Task<string> Handle(DeleteAddressCommend request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<string>> Handle(DeleteAddressCommend request, CancellationToken cancellationToken)
         {
             var DeletedAddress = new Entities.Address
             {
@@ -29,10 +30,16 @@ namespace E_commerce.Core.Handlers.Address
 
             var result = await _addressService.DeleteAddressAsync(DeletedAddress);
 
-            if(!string.IsNullOrEmpty(result))
-                return result;
+            if (string.IsNullOrEmpty(result))
+                return new ApiResponse<string> (400,result);
 
-            return "Deleted Successfully";
+
+            return new ApiResponse<string>
+            {
+                StatusCode =200,
+                Success = true,
+                Data = "Deleted Successfully",
+            };
         }
     }
 }

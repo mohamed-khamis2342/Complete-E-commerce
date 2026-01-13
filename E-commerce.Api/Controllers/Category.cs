@@ -31,7 +31,7 @@ namespace E_commerce.Api.Controllers
             var result = await _mediator.Send(_id);
             return Ok(result);
         }
-        [HttpGet("DeleteById")]
+        [HttpDelete("DeleteById")]
         public async Task<IActionResult> DeleteById([FromQuery] DeleteCtegoryByIdCommend _id)
         {
             if (!ModelState.IsValid)

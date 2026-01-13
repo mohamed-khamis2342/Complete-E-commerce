@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using E_commerce.DTOs;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace E_commerce.Core.Commends.Address
 {
-    public class UpdateAddressCommend:IRequest<string>
+    public class UpdateAddressCommend:IRequest<ApiResponse<string>>
     {
 
         [Required(ErrorMessage = "AddressId is required.")]

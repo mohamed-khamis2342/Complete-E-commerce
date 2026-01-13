@@ -36,7 +36,7 @@ namespace E_commerce.Core.Handlers.Category
                     Data = "updated Successfully"
                 };
 
-            return new ApiResponse<string>(400,"Something went wrong"); ;
+            return new ApiResponse<string>(400,"Something went wrong"); 
         }
     }
 }

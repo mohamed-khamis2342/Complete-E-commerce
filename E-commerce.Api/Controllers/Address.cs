@@ -34,14 +34,15 @@ namespace E_commerce.Api.Controllers
 
             return Ok(result);
         }
-        [HttpPost("UpdateAddress")]
+        [HttpPut("UpdateAddress")]
+    
         public async Task <IActionResult> UpdateAddress([FromBody]UpdateAddressCommend _address)  
         {
             var result = await _mediator.Send(_address);
 
             return Ok(result);
         }
-        [HttpPost("DeleteAddress")]
+        [HttpDelete("DeleteAddress")]
         public async Task <IActionResult> DeleteAddress([FromBody]DeleteAddressCommend _address)  
         {
             var result = await _mediator.Send(_address);

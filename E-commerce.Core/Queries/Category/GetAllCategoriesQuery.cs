@@ -7,7 +7,7 @@ using System.Text;
 
 namespace E_commerce.Core.Queries.Category
 {
-    public class GetAllCategoriesQuery:IRequest<ApiResponse<List<CategoryResponseDTO>>>
+    public class GetAllCategoriesQuery: IRequest<ApiResponse<List<CategoryResponseDTO>>>
     {
     }
 }

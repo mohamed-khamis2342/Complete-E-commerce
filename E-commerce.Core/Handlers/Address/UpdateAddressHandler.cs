@@ -1,4 +1,5 @@
 ﻿using E_commerce.Core.Commends.Address;
+using E_commerce.DTOs;
 using E_commerce.Entities;
 using E_commerce.Service.Abstracts;
 using MediatR;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace E_commerce.Core.Handlers.Address
 {
-    public class UpdateAddressHandler : IRequestHandler<UpdateAddressCommend, string>
+    public class UpdateAddressHandler : IRequestHandler<UpdateAddressCommend, ApiResponse<string>>
     {
         private readonly IAddressService _addressService;
 
@@ -19,7 +20,7 @@ namespace E_commerce.Core.Handlers.Address
         }
 
 
-        public async Task<string> Handle(UpdateAddressCommend request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<string>> Handle(UpdateAddressCommend request, CancellationToken cancellationToken)
         {
             var Address = new Entities.Address
             {
@@ -34,13 +35,17 @@ namespace E_commerce.Core.Handlers.Address
 
             };
 
-            var result = await _addressService.UpdateAddressAsync(Address);  
+            var result = await _addressService.UpdateAddressAsync(Address);
 
-            if(!string.IsNullOrEmpty(result))
-                return result;
+            if (string.IsNullOrEmpty(result))
+                return new ApiResponse<string>(400, result);
 
 
-            return "Updated Successfully";
+            return  new ApiResponse<string> { StatusCode=200,
+              Success =true,
+              Data = result 
+            
+            };
 
           
         }

@@ -13,6 +13,7 @@ namespace E_commerce.Infrastructure
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             services.AddTransient<IAddressRepository,AddressRepository>();
             services.AddTransient<ICategoryRepository,CategoryRepository>();
+            services.AddTransient<IProductRepository,ProductRepository>();
 
             return services;
         }
