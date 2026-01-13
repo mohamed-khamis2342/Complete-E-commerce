@@ -13,6 +13,7 @@ namespace E_commerce.Service
 
 
             services.AddTransient<IAddressService,AddressService>();
+            services.AddTransient<ICategoryService,CategoryService>();
             return services;
         }
 
