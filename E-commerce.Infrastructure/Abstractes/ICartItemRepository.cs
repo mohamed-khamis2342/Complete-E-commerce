@@ -6,12 +6,7 @@ using System.Text;
 
 namespace E_commerce.Infrastructure.Abstractes
 {
-    public interface IAddressRepository:IGenericRepositoryAsync<Address>
+    public interface ICartItemRepository:IGenericRepositoryAsync<CartItem>
     {
-      
-      
-
-
-
     }
 }

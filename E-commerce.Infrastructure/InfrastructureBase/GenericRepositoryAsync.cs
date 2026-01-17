@@ -61,19 +61,25 @@ namespace E_commerce.Infrastructure.InfrastructureBase
         {
             await _dbContext.SaveChangesAsync();
         }
+        public virtual async Task DeleteRangeAsync(IEnumerable<T> entities)
+        {
+            _dbContext.Set<T>().RemoveRange(entities);
+            await _dbContext.SaveChangesAsync();
+        }
 
 
 
-       
 
-   
 
-     
-       
+
+
+
+
+
     }
 
 
 
-    }
+}
 
 

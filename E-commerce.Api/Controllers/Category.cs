@@ -58,7 +58,7 @@ namespace E_commerce.Api.Controllers
 
 
 
-        [HttpPost("UpdateCategory")]
+        [HttpPut("UpdateCategory")]
 
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommend _category)
         {

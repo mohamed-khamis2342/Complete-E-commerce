@@ -6,12 +6,11 @@ using System.Text;
 
 namespace E_commerce.Infrastructure.Abstractes
 {
-    public interface IAddressRepository:IGenericRepositoryAsync<Address>
+    public interface IShoppingCartRepository:IGenericRepositoryAsync<Cart>
     {
-      
-      
 
-
-
+        Task<Cart> GetCartByCustomerIdAsync(Guid _id);
+       
+        Task<string> ClearCartAsync(Guid _id);
     }
 }
