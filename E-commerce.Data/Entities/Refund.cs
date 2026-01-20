@@ -1,4 +1,4 @@
-﻿using E_commerce.Entities.Enums;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,8 +30,7 @@ namespace E_commerce.Entities
             public decimal Amount { get; set; }
 
             // Status of the Refund
-            [Required]
-            public RefundStatus Status { get; set; }
+         
 
             [Required]
             public string RefundMethod { get; set; }

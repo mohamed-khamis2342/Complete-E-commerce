@@ -1,4 +1,4 @@
-﻿using E_commerce.Entities.Enums;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,10 +29,6 @@ namespace E_commerce.Entities
 
             [Required]
             public DateTime PaymentDate { get; set; }
-
-            [Required]
-            [StringLength(20)]
-            public PaymentStatus Status { get; set; } // "Completed", "Pending", "Failed", "Refunded"
 
             public Refund Refund { get; set; } // Navigational property to Refund
         }

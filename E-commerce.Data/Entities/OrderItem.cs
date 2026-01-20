@@ -7,33 +7,25 @@ namespace E_commerce.Entities
     {
             public Guid Id { get; set; }= Guid.NewGuid();
 
-            // Foreign key to Order
-            [Required(ErrorMessage = "Order ID is required.")]
             public Guid OrderId { get; set; }
 
             [ForeignKey("OrderId")]
             public Order Order { get; set; }
 
-            // Foreign key to Product
-            [Required(ErrorMessage = "Product ID is required.")]
             public Guid ProductId { get; set; }
 
             [ForeignKey("ProductId")]
             public Product Product { get; set; }
 
-            [Range(1, 100, ErrorMessage = "Quantity must be between 1 and 100.")]
+          
             public int Quantity { get; set; }
 
-            [Range(0.00, 10000.00, ErrorMessage = "Unit Price must be between $0.00 and $10,000.00.")]
-            [Column(TypeName = "decimal(18,2)")]
+           
             public decimal UnitPrice { get; set; }
 
-            [Range(0.00, 10000.00, ErrorMessage = "Discount must be between $0.00 and $10,000.00.")]
-            [Column(TypeName = "decimal(18,2)")]
             public decimal Discount { get; set; }
 
-            [Range(0.00, 10000.00, ErrorMessage = "Total Price must be between $0.00 and $10,000.00.")]
-            [Column(TypeName = "decimal(18,2)")]
+        
             public decimal TotalPrice { get; set; }
         }
     }

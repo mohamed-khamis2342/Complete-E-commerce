@@ -1,4 +1,5 @@
 ﻿using E_commerce.Auth;
+using E_commerce.Data.Entities;
 using E_commerce.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,7 @@ namespace E_commerce.Infrastructure.AppContext
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<OrderStatuses> OrderStatuses { get; set; }
 
 
     }

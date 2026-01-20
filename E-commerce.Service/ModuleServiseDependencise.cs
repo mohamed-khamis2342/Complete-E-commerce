@@ -18,6 +18,9 @@ namespace E_commerce.Service
             services.AddTransient<IproductService,ProductService>();
             services.AddTransient<IShoppingCartService,ShoppingCartService>();
             services.AddTransient<ICartItemService,CartitemService>();
+            services.AddTransient<IOrderService,OrderService>();
+
+            services.AddTransient<ICustomerService,CustomerService>();
 
             return services;
         }

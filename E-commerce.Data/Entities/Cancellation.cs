@@ -1,4 +1,4 @@
-﻿using E_commerce.Entities.Enums;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,8 +21,7 @@ namespace E_commerce.Entities
             public string Reason { get; set; }
 
             // Status of the cancellation request
-            [Required]
-            public CancellationStatus Status { get; set; }
+          
 
             // Date and time when the cancellation was requested
             [Required]
