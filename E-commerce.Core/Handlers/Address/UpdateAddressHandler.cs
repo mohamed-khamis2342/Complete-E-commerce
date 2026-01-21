@@ -1,9 +1,11 @@
 ﻿using E_commerce.Core.Commends.Address;
+using E_commerce.Core.Sources;
 using E_commerce.DTOs;
 using E_commerce.Entities;
 using E_commerce.Service.Abstracts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,10 +15,11 @@ namespace E_commerce.Core.Handlers.Address
     public class UpdateAddressHandler : IRequestHandler<UpdateAddressCommend, ApiResponse<string>>
     {
         private readonly IAddressService _addressService;
-
-        public UpdateAddressHandler(IAddressService addressService)
+        private readonly IStringLocalizer<SharedSource> _stringLocalizer;
+        public UpdateAddressHandler(IAddressService addressService, IStringLocalizer<SharedSource> stringLocalizer)
         {
             this._addressService = addressService;
+            _stringLocalizer = stringLocalizer;
         }
 
 
@@ -38,7 +41,7 @@ namespace E_commerce.Core.Handlers.Address
             var result = await _addressService.UpdateAddressAsync(Address);
 
             if (string.IsNullOrEmpty(result))
-                return new ApiResponse<string>(400, result);
+                return new ApiResponse<string>(400, _stringLocalizer[SharedSourceKey.Wrong]);
 
 
             return  new ApiResponse<string> { StatusCode=200,

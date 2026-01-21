@@ -1,9 +1,11 @@
 ﻿using E_commerce.Core.Commends.Address;
 using E_commerce.Core.DTOs.Address;
+using E_commerce.Core.Sources;
 using E_commerce.DTOs;
 using E_commerce.Entities;
 using E_commerce.Service.Abstracts;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +15,12 @@ namespace E_commerce.Core.Handlers.Address
     public class CreateAddressHandler : IRequestHandler<CreateAddressCommend, ApiResponse<AddressResponseDTO>>
     {
         private readonly IAddressService _addressService;
-        public CreateAddressHandler(IAddressService addressService)
+        private readonly IStringLocalizer<SharedSource> _stringLocalizer;
+        public CreateAddressHandler(IAddressService addressService,
+            IStringLocalizer<SharedSource> stringLocalizer)
         {
             _addressService = addressService;
+            _stringLocalizer = stringLocalizer;
         
             
         }
@@ -35,7 +40,7 @@ namespace E_commerce.Core.Handlers.Address
 
             if (!string.IsNullOrEmpty(result))
             {
-                return new ApiResponse<AddressResponseDTO>(400, "Something went wrong");
+                return new ApiResponse<AddressResponseDTO>(400, _stringLocalizer[SharedSourceKey.Wrong]);
 
             }
             var response = new AddressResponseDTO

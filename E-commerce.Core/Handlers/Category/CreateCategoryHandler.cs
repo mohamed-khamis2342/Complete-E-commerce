@@ -1,8 +1,10 @@
 ﻿using E_commerce.Core.Commends.Category;
 using E_commerce.Core.DTOs.Category;
+using E_commerce.Core.Sources;
 using E_commerce.DTOs;
 using E_commerce.Service.Abstracts;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,13 +14,14 @@ namespace E_commerce.Core.Handlers.Category
     public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommend,ApiResponse<CategoryResponseDTO>>
     {
         private readonly ICategoryService _categoryService;
-        public CreateCategoryHandler(ICategoryService categoryService)
+        private readonly IStringLocalizer<SharedSource> _stringLocalizer;
+        public CreateCategoryHandler(ICategoryService categoryService, IStringLocalizer<SharedSource> stringLocalizer)
         {
             _categoryService = categoryService;
-            
+            _stringLocalizer = stringLocalizer;
         }
 
-       
+
 
         public async Task<ApiResponse<CategoryResponseDTO>> Handle(CreateCategoryCommend request, CancellationToken cancellationToken)
         {
@@ -51,7 +54,7 @@ namespace E_commerce.Core.Handlers.Category
                 };
             }
 
-            return new ApiResponse<CategoryResponseDTO>(400,"Something went wrong"); ;
+            return new ApiResponse<CategoryResponseDTO>(400, _stringLocalizer[SharedSourceKey.Wrong]); ;
             
         }
     }

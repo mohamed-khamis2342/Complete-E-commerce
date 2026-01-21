@@ -32,7 +32,7 @@ namespace E_commerce.Core.Handlers.Cart
             AddToCartCommend request,
             CancellationToken cancellationToken)
         {
-            // 1️⃣ Get product
+          
             var product = await _productService.GetByIdAsync(request.ProductId);
 
             if (product == null)
@@ -44,7 +44,7 @@ namespace E_commerce.Core.Handlers.Cart
                     400,
                     $"Only {product.StockQuantity} units of {product.Name} are available.");
 
-            // 2️⃣ Get or create cart
+           
             var cart = await _shoppingCartService
                 .GetCartByCustomerIdAsync(request.CustomerId);
 
@@ -62,13 +62,13 @@ namespace E_commerce.Core.Handlers.Cart
                 await _shoppingCartService.AddToCartAsync(cart);
             }
 
-            // 3️⃣ Check if product already exists in cart
+         
             var existingCartItem = cart.CartItems
                 .FirstOrDefault(ci => ci.ProductId == request.ProductId);
 
             if (existingCartItem != null)
             {
-                // Check stock again with existing quantity
+             
                 if (existingCartItem.Quantity + request.Quantity > product.StockQuantity)
                     return new ApiResponse<CartResponseDTO>(
                         400,
@@ -84,7 +84,7 @@ namespace E_commerce.Core.Handlers.Cart
             }
             else
             {
-                // Calculate discount per unit
+                
                 var discountPerUnit = product.DiscountPercentage > 0
                     ? product.Price * product.DiscountPercentage / 100
                     : 0;
@@ -104,16 +104,14 @@ namespace E_commerce.Core.Handlers.Cart
                 await _cartItemService.AddToCarItemtAsync(cartItem);
             }
 
-            // 4️⃣ Update cart
             cart.UpdatedAt = DateTime.UtcNow;
-           // await _shoppingCartService.UpdateCartAsync(cart);
+         
             await _shoppingCartService.UpdateCartAsync(cart);
 
-            // 5️⃣ Reload cart with items & products
             cart = await _shoppingCartService
                 .GetCartByCartID(cart.Id) ?? new Entities.Cart();
 
-            // 6️⃣ Calculate totals
+    
             var totalBasePrice =
                 cart.CartItems.Sum(ci => ci.UnitPrice * ci.Quantity);
 
@@ -122,7 +120,6 @@ namespace E_commerce.Core.Handlers.Cart
 
             var totalAmount = totalBasePrice - totalDiscount;
 
-            // 7️⃣ Map to DTO
             var cartDTO = new CartResponseDTO
             {
                 Id = cart.Id,
