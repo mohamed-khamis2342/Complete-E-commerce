@@ -1,7 +1,9 @@
 ﻿using E_commerce.Core.Commends.Product;
+using E_commerce.Core.Sources;
 using E_commerce.DTOs;
 using E_commerce.Service.Abstracts;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +13,13 @@ namespace E_commerce.Core.Handlers.Product
     public class DeleteProductByIdHandler : IRequestHandler<DeleteProductCommend, ApiResponse<string>>
     {
         private readonly IproductService _productService;
+        private readonly IStringLocalizer<SharedSource> _stringLocalizer;
 
-        public DeleteProductByIdHandler(IproductService productService)
+
+        public DeleteProductByIdHandler(IproductService productService, IStringLocalizer<SharedSource> stringLocalizer = null)
         {
             this._productService = productService;
+            _stringLocalizer = stringLocalizer;
         }
         public async Task<ApiResponse<string>> Handle(DeleteProductCommend request, CancellationToken cancellationToken)
         {
@@ -30,7 +35,7 @@ namespace E_commerce.Core.Handlers.Product
             {
                 StatusCode = 200,
                 Success = true,
-                Data = "Product deleted successfully"
+                Data = $"Product {_stringLocalizer[SharedSourceKey.Deleted]}"
             };
 
 

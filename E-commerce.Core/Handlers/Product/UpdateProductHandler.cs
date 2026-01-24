@@ -20,7 +20,6 @@ namespace E_commerce.Core.Handlers.Product
             _CategoryService = categoryService;
         }
 
-        public ICategoryService CategoryService { get; }
 
         public async Task<ApiResponse<string>> Handle(UpdateProductCommend request, CancellationToken cancellationToken)
         {

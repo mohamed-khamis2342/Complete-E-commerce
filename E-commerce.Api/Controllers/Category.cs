@@ -17,9 +17,9 @@ namespace E_commerce.Api.Controllers
             
         }
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] GetAllCategoriesQuery getAllCategoriesQuery)
         {
-            var result = await _mediator.Send(new GetAllCategoriesQuery());
+            var result = await _mediator.Send(getAllCategoriesQuery);
 
             return Ok(result);
         }

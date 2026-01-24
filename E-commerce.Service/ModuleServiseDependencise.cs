@@ -21,6 +21,9 @@ namespace E_commerce.Service
             services.AddTransient<IOrderService,OrderService>();
 
             services.AddTransient<ICustomerService,CustomerService>();
+            services.AddTransient( typeof(IPaginationService<>),typeof(PaginationService<>));
+ 
+
 
             return services;
         }

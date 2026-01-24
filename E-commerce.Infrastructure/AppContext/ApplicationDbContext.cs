@@ -43,6 +43,13 @@ namespace E_commerce.Infrastructure.AppContext
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<OrderStatuses> OrderStatuses { get; set; }
 
+        public DbSet<CancellationStatus> cancellationStatuses { get; set; } 
+        public DbSet<PaymentStatus> paymentStatuses { get; set; }   
+
+        public DbSet<RefundMethod> refundMethods { get; set; }      
+
+        public DbSet<RefundStatus> refundStatuses { get; set; } 
+
 
     }
 }
